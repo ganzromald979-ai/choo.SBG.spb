@@ -97,18 +97,39 @@
   .case-text h3 { font-size: 24px; color: var(--gold-light); margin-bottom: 20px; text-transform: uppercase;}
   .case-text p { color: var(--muted); font-size: 16px; margin-bottom: 20px; line-height: 1.7;}
 
-  /* КОНТАКТЫ */
+  /* КОНТАКТЫ И КАРТА */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
   .info-item{background:linear-gradient(145deg,#17181b,#111214);border:1px solid #2d2e32;border-radius:3px;padding:20px 24px;margin-bottom:16px;border-left:2px solid var(--gold)}
   .info-item small{color:var(--muted);font-size:12px;text-transform:uppercase;display:block;margin-bottom:6px;letter-spacing:0.5px}
   .info-item b{font-size:16px;display:block;line-height:1.4}
+  
   form{background:#141518;border:1px solid #303136;border-radius:3px;padding:36px}
   form .field{margin-bottom:20px}
   form label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;font-weight:600}
   form input,form textarea{width:100%;padding:14px;border-radius:3px;border:1px solid #35363a;background:#0c0d0f;color:var(--text);font-family:inherit;font-size:15px;outline:none;transition:0.3s;}
   form input:focus,form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(214,180,91,0.1)}
   form textarea{resize:vertical;min-height:120px}
-  .form-msg{font-size:14px;color:var(--gold);margin-top:16px;display:none;text-align:center;font-weight:600}
+  .form-msg{font-size:14px;color:var(--gold-light);margin-top:16px;display:none;text-align:center;font-weight:600}
+
+  /* Стили для карты */
+  .map-wrapper {
+    margin-top: 40px;
+    border: 1px solid #2d2e32;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    padding-bottom: 40%; /* Пропорции карты */
+    height: 0;
+  }
+  .map-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(80%) invert(90%) contrast(110%); /* Темная карта */
+  }
 
   /* ПОДВАЛ */
   footer{background:#0d0e10;border-top:1px solid rgba(214,180,91,.25);padding:60px 0 30px;font-size:14px;color:var(--muted)}
@@ -133,6 +154,7 @@
     .hero-visual{order:-1;margin-bottom:40px}
     .foot-grid{grid-template-columns:1fr;}
     .nav{height:82px}
+    .map-wrapper { padding-bottom: 60%; }
   }
   @media(max-width:576px){
     .steps{grid-template-columns:1fr}
@@ -303,16 +325,51 @@
         <div class="info-item"><small>Дежурная служба</small><b>Круглосуточно, без выходных</b></div>
         <div class="info-item"><small>Телефоны</small><b>+7 (911) 948-37-72<br>+7 (911) 008-31-11<br>+7 (967) 532-57-96</b></div>
         <div class="info-item"><small>E-mail</small><b>chop.SB-Groza@yandex.ru</b></div>
-        <div class="info-item"><small>Генеральный директор</small><b>Гамаюнова Екатерина Андреевна</b></div>
       </div>
-      <form id="leadForm">
-        <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Ваше имя" required></div>
-        <div class="field"><label>Телефон</label><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
-        <div class="field"><label>Компания</label><input type="text" name="company" placeholder="Название (необязательно)"></div>
-        <div class="field"><label>Задача</label><textarea name="message" placeholder="Что нужно охранять, где, какие требования"></textarea></div>
+      
+      <!-- ФОРМА С ОТПРАВКОЙ НА ПОЧТУ -->
+      <form id="leadForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Скрытые поля Web3Forms -->
+        <input type="hidden" name="access_key" value="4b2894f6-a88a-4b89-b0fc-33008c59b888">
+        <input type="hidden" name="subject" value="Новая заявка с сайта СБ Гроза">
+        <input type="hidden" name="from_name" value="Сайт СБ Гроза">
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- Поля формы -->
+        <div class="field">
+          <label>Ваше имя</label>
+          <input type="text" name="name" placeholder="Ваше имя" required>
+        </div>
+        
+        <div class="field">
+          <label>Телефон</label>
+          <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        
+        <div class="field">
+          <label>E-mail (необязательно)</label>
+          <input type="email" name="email" placeholder="Ваш e-mail">
+        </div>
+        
+        <div class="field">
+          <label>Компания (необязательно)</label>
+          <input type="text" name="company" placeholder="Название компании">
+        </div>
+        
+        <div class="field">
+          <label>Задача</label>
+          <textarea name="message" placeholder="Что нужно охранять, где, какие требования" required></textarea>
+        </div>
+        
         <button type="submit" class="btn btn-krap" style="width:100%">Отправить заявку</button>
-        <div class="form-msg" id="formMsg">Форма пока не подключена. Для заявки воспользуйтесь телефоном или электронной почтой.</div>
+        
+        <div class="form-msg" id="formMsg">Спасибо! Заявка отправлена — мы перезвоним.</div>
       </form>
+    </div>
+    
+    <!-- КАРТА -->
+    <div class="map-wrapper">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=30.416192%2C59.933401&mode=search&text=Санкт-Петербург%2C%20пр-кт%20Уткин%2C%2015%20литера%20Е&z=16" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
     </div>
   </div>
 </section>
@@ -346,4 +403,77 @@
     </div>
     <h4 style="color:var(--gold); font-size:16px; margin-bottom:20px; text-transform:uppercase; letter-spacing:1px;">Реквизиты организации</h4>
     <table class="req-table">
-      <tr><
+      <tr><td>Полное наименование</td><td>Общество с ограниченной ответственностью Частная охранная организация «Служба Безопасности Гроза»</td></tr>
+      <tr><td>Сокращенное наименование</td><td>ООО ЧОО «СБ Гроза»</td></tr>
+      <tr><td>Юридический адрес</td><td>195112, г. Санкт-Петербург, вн. тер. г. муниципальный округ Малая Охта, пр-кт Уткин, д. 15, литера Е, помещ. 2-Н</td></tr>
+      <tr><td>ИНН / КПП</td><td>7806635658 / 780601001</td></tr>
+      <tr><td>ОГРН</td><td>1267800035953</td></tr>
+      <tr><td>Расчетный счет</td><td>40702810655710022592</td></tr>
+      <tr><td>Банк</td><td>СЕВЕРО-ЗАПАДНЫЙ БАНК ПАО СБЕРБАНК</td></tr>
+      <tr><td>Корреспондентский счет</td><td>30101810500000000653</td></tr>
+      <tr><td>БИК</td><td>044030653</td></tr>
+      <tr><td>ОКПО</td><td>62994100</td></tr>
+      <tr><td>ОКАТО</td><td>40278000000</td></tr>
+      <tr><td>ОКТМО</td><td>40350000000</td></tr>
+      <tr><td>ОКОГУ</td><td>4210014</td></tr>
+      <tr><td>ОКФС</td><td>16</td></tr>
+      <tr><td>ОКОПФ</td><td>12300</td></tr>
+      <tr><td>ОКВЭД</td><td>80.10 Деятельность охранных служб, в том числе частных<br>80.20 Деятельность систем обеспечения безопасности</td></tr>
+    </table>
+    <div class="foot-bottom">
+      <span>© 2026 ООО ЧОО «СБ Гроза». Все права защищены.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Форма отправки через Web3Forms
+  document.getElementById('leadForm').addEventListener('submit', async function(e){
+    e.preventDefault(); // Отменяем стандартную перезагрузку страницы
+    
+    const formData = new FormData(this);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.innerText;
+    btn.innerText = 'Отправка...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: json
+      });
+      
+      if (res.status === 200) {
+          document.getElementById('formMsg').style.display = 'block';
+          this.reset();
+          setTimeout(()=>document.getElementById('formMsg').style.display='none', 5000);
+      } else {
+          alert("Ошибка при отправке. Пожалуйста, позвоните нам.");
+      }
+    } catch (error) {
+        alert("Ошибка сети. Пожалуйста, позвоните нам.");
+    } finally {
+      btn.innerText = originalText;
+      btn.disabled = false;
+    }
+  });
+
+  // Модальное окно для грамоты
+  function openModal() {
+    document.getElementById('diplomaModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('diplomaModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
