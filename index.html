@@ -3,347 +3,396 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ООО ЧОО «СБ Гроза» — Служба Безопасности Гроза</title>
-<meta name="description" content="ООО ЧОО «СБ Гроза»: охрана частной, коммерческой и государственной собственности, физическая и техническая охрана, ГБР, массовые мероприятия. Санкт-Петербург.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 116'%3E%3Cpath d='M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z' fill='%230b0b0c' stroke='%23781c25' stroke-width='5'/%3E%3Cpath d='M58 20 35 57h15l-8 39 24-48H51Z' fill='%23d6b45b'/%3E%3C/svg%3E">
+<title>ООО ЧОО «СБ Гроза» — Служба Безопасности Гроза | Санкт-Петербург</title>
+<meta name="description" content="ООО ЧОО «СБ Гроза»: профессиональная охрана частной, коммерческой и государственной собственности. Физическая и техническая охрана, пультовая охрана, ГБР, сопровождение грузов. Санкт-Петербург и РФ.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 116'%3E%3Cpath d='M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z' fill='%230b0b0c' stroke='%23781c25' stroke-width='6'/%3E%3Cpath d='M58 20 35 57h15l-8 39 24-48H51Z' fill='%23d6b45b'/%3E%3C/svg%3E">
 <style>
-  :root{
-    --bg:#090a0b; --bg2:#101113; --card:#151619; --line:#303034;
-    --gold:#d6b45b; --gold-light:#f3dfa0; --gold-dark:#98752c;
-    --krap:#781c25; --krap-light:#a52c37;
-    --text:#f0eee8; --muted:#a5a39e; --max:1240px;
+  :root {
+    --bg: #08090a;
+    --bg-elevated: #0e1012;
+    --card: #131518;
+    --card-hover: #181a1e;
+    --line: #26292e;
+    --line-gold: rgba(214, 180, 91, 0.28);
+    --gold: #d6b45b;
+    --gold-light: #edd48e;
+    --gold-dark: #9c7b2f;
+    --krap: #7a1c25;
+    --krap-light: #9e2733;
+    --text: #f2f0ea;
+    --muted: #9e9c96;
+    --max: 1220px;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(18px,3vw,34px)}
-  section{padding:clamp(64px,7vw,100px) 0;position:relative}
-  h1,h2,h3{line-height:1.2;font-weight:700}
 
-  /* --- ЛОГОТИПЫ --- */
-  .header-logo { display: flex; align-items: center; gap: 12px; }
-  .header-logo svg { height: 50px; width: auto; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 4vw, 36px); }
+  section { padding: clamp(72px, 8vw, 110px) 0; position: relative; }
+  h1, h2, h3, h4 { line-height: 1.18; font-weight: 700; letter-spacing: -0.01em; }
+
+  /* --- ВЕРХНЯЯ ПАНЕЛЬ / HEADER --- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 9, 10, 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 86px;
+    gap: 20px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .header-logo svg { height: 46px; width: auto; }
   .header-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-  .header-logo-text span { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
-  .header-logo-text b { font-size: 24px; color: var(--gold); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-
-  header{position:sticky;top:0;z-index:100;background:rgba(9,10,11,.96);border-bottom:1px solid rgba(214,180,91,.22);backdrop-filter:blur(10px);}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:92px;gap:20px}
-  nav ul{display:flex;gap:clamp(14px,2vw,28px);list-style:none;font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px}
-  nav a{transition:color 0.3s}
-  nav a:hover{color:var(--gold-light)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 25px;border-radius:3px;font-weight:700;font-size:12px;cursor:pointer;border:none;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
-  .btn-gold{background:linear-gradient(135deg,#c6a34e,#ead28a);color:#17140d;}
-  .btn-gold:hover{background:linear-gradient(135deg,#ead28a,#c6a34e);}
-  .btn-krap{background:var(--krap);color:#fff;}
-  .btn-krap:hover{background:var(--krap-light);}
-  .burger{display:none;background:none;border:none;color:var(--gold);font-size:24px;cursor:pointer}
-
-  .hero{background:radial-gradient(ellipse at 78% 42%,rgba(120,28,37,.17),transparent 43%),linear-gradient(110deg,#101113,#090a0b 72%);border-bottom:1px solid var(--line);padding:clamp(70px,9vw,125px) 0 76px;position:relative;overflow:hidden;}
-  .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),rgba(120,28,37,.8),transparent);}
-  .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(28px,6vw,86px);align-items:center}
-  .hero h1{font-size:clamp(34px,5vw,60px);margin-bottom:24px;text-transform:uppercase;letter-spacing:.2px;line-height:1.06}
-  .hero h1 span{color:var(--gold);display:block;font-size:.76em;margin-top:14px;letter-spacing:5px;font-weight:600;}
-  .hero p{color:#b7b4ad;font-size:17px;margin-bottom:40px;max-width:540px;border-left:2px solid var(--gold);padding-left:20px;line-height:1.75;}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-  .hero-visual{padding:28px 12px;position:relative;display:flex;justify-content:center;align-items:center;}
-  .hero-visual svg{width:100%;max-width:280px;height:auto;filter:drop-shadow(0 18px 35px rgba(0,0,0,.55));}
-
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:76px}
-  .stat{background:linear-gradient(145deg,#17181b,#101113);border:1px solid #292a2d;border-top:1px solid rgba(214,180,91,.65);border-radius:3px;padding:22px;transition:transform 0.3s;}
-  .stat:hover{transform:translateY(-5px);}
-  .stat b{display:block;font-size:30px;color:var(--gold-light);line-height:1;margin-bottom:8px;font-weight:800}
-  .stat small{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px}
-
-  .sec-title{font-size:clamp(25px,3vw,36px);margin-bottom:20px;color:var(--text);text-transform:uppercase;letter-spacing:.5px}
-  .sec-title em{color:var(--gold-light);font-style:normal}
-  .sec-desc{color:var(--muted);margin-bottom:50px;max-width:640px;font-size:16px}
-
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .about-grid p{color:var(--muted);margin-bottom:18px;font-size:16px}
-  .about-grid p strong{color:var(--text)}
-  .about-visual{background:radial-gradient(circle,#1a1a1b,#0b0c0d 70%);border:1px solid #343034;border-radius:3px;padding:50px;display:flex;justify-content:center;align-items:center;}
-
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .svc{background:linear-gradient(145deg,#17181b,#111214);border:1px solid #2b2c30;border-left:2px solid var(--krap);border-radius:3px;padding:27px;transition:0.3s;position:relative;overflow:hidden;}
-  .svc:hover{border-color:rgba(214,180,91,.6);border-left-color:var(--gold);transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.24);}
-  .svc h3{font-size:18px;margin-bottom:12px;color:var(--gold-light)}
-  .svc p{color:var(--muted);font-size:15px;margin-bottom:16px}
-  .svc ul{list-style:none;font-size:14px;color:var(--muted)}
-  .svc li{padding-left:20px;position:relative;margin-bottom:8px}
-  .svc li::before{content:"—";position:absolute;left:0;color:var(--gold);font-weight:900;}
-
-  .gbr{background:linear-gradient(100deg,#50131a,#741c26 52%,#421118);border-top:1px solid rgba(214,180,91,.25);border-bottom:1px solid rgba(214,180,91,.25);padding:55px 0;text-align:center}
-  .gbr h2{font-size:clamp(22px,3vw,30px);margin-bottom:12px;color:#fff;text-transform:uppercase;letter-spacing:.5px}
-  .gbr p{color:rgba(255,255,255,0.85);max-width:700px;margin:0 auto;font-size:16px}
-
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-  .step{background:linear-gradient(145deg,#17181b,#111214);border:1px solid #2d2e32;border-radius:3px;padding:24px;position:relative;}
-  .step b{display:inline-block;background:rgba(214,180,91,.1);color:var(--gold-light);font-size:16px;padding:4px 10px;border-radius:2px;margin-bottom:12px}
-  .step h3{font-size:16px;margin-bottom:8px;text-transform:uppercase;color:var(--text)}
-  .step p{color:var(--muted);font-size:14px}
-
-  /* КЕЙСЫ И ГРАМОТА */
-  .cases-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;}
-  .diploma-wrapper { background: linear-gradient(145deg,#17181b,#111214); border: 1px solid #2d2e32; border-radius: 3px; padding: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s, border-color 0.3s; cursor: pointer; }
-  .diploma-wrapper:hover { transform: scale(1.02); border-color: var(--gold); }
-  .diploma-wrapper img { width: 100%; height: auto; border-radius: 3px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: block; }
-  .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
-  .modal.active { display: flex; opacity: 1; }
-  .modal-content { max-width: 90%; max-height: 90vh; box-shadow: 0 0 50px rgba(214,180,91,0.3); border: 2px solid var(--gold); }
-  .modal-content img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .close-btn { position: absolute; top: 20px; right: 30px; color: var(--gold-light); font-size: 40px; font-weight: bold; cursor: pointer; }
-  .case-text h3 { font-size: 24px; color: var(--gold-light); margin-bottom: 20px; text-transform: uppercase;}
-  .case-text p { color: var(--muted); font-size: 16px; margin-bottom: 20px; line-height: 1.7;}
-
-  /* КОНТАКТЫ */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-  .info-item{background:linear-gradient(145deg,#17181b,#111214);border:1px solid #2d2e32;border-radius:3px;padding:20px 24px;margin-bottom:16px;border-left:2px solid var(--gold)}
-  .info-item small{color:var(--muted);font-size:12px;text-transform:uppercase;display:block;margin-bottom:6px;letter-spacing:0.5px}
-  .info-item b{font-size:16px;display:block;line-height:1.4}
-  form{background:#141518;border:1px solid #303136;border-radius:3px;padding:36px}
-  form .field{margin-bottom:20px}
-  form label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;font-weight:600}
-  form input,form textarea{width:100%;padding:14px;border-radius:3px;border:1px solid #35363a;background:#0c0d0f;color:var(--text);font-family:inherit;font-size:15px;outline:none;transition:0.3s;}
-  form input:focus,form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(214,180,91,0.1)}
-  form textarea{resize:vertical;min-height:120px}
-  .form-msg{font-size:14px;color:var(--gold);margin-top:16px;display:none;text-align:center;font-weight:600}
-
-  /* ПОДВАЛ */
-  footer{background:#0d0e10;border-top:1px solid rgba(214,180,91,.25);padding:60px 0 30px;font-size:14px;color:var(--muted)}
-  .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px}
-  .foot-col h4{color:var(--gold);font-size:16px;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px}
-  .foot-col a{display:block;margin-bottom:10px;transition:color 0.3s}
-  .foot-col a:hover{color:var(--gold-light)}
-  .req-table{width:100%;border-collapse:collapse;font-size:13px;background:#141518;border:1px solid #303136;border-radius:3px;overflow:hidden;}
-  .req-table td{padding:10px 16px;border-bottom:1px solid #292a2e;vertical-align:top;}
-  .req-table tr:last-child td{border-bottom:none;}
-  .req-table td:first-child{color:var(--muted);width:40%;}
-  .req-table td:last-child{color:var(--text);font-weight:500;}
-  .foot-bottom{border-top:1px solid #303136;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;}
-
-  @media(max-width:992px){
-    nav ul{display:none;flex-direction:column;position:absolute;top:92px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);padding:24px;gap:20px;}
-    nav.open ul{display:flex}
-    .burger{display:block}
-    .hero-grid,.about-grid,.contact-grid,.services-grid,.cases-grid{grid-template-columns:1fr}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .steps{grid-template-columns:repeat(2,1fr)}
-    .hero-visual{order:-1;margin-bottom:40px}
-    .foot-grid{grid-template-columns:1fr;}
-    .nav{height:82px}
+  .header-logo-text span {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    font-weight: 600;
   }
-  @media(max-width:576px){
-    .steps{grid-template-columns:1fr}
-    section{padding:60px 0}
-    .hero h1{font-size:32px;}
-    .hero p{font-size:15px;}
-    .stats{margin-top:45px}
-    .req-table td{display:block;width:100%;}
-    .req-table td:first-child{border-bottom:none;padding-bottom:0;color:var(--gold);}
-    .req-table td:last-child{padding-top:4px;}
-    .nav{gap:10px}
-    .nav>.btn{padding:12px 14px;font-size:10px}
-    .header-logo svg { height: 36px; }
-    .header-logo-text b { font-size: 18px; }
-    .close-btn { top: 10px; right: 15px; font-size: 30px; }
+  .header-logo-text b {
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
   }
-</style>
-</head>
-<body>
 
-<!-- HEADER -->
-<header>
-  <div class="wrap nav">
-    <a href="#" class="header-logo">
-      <svg viewBox="0 0 100 116" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z" fill="#0b0b0c" stroke="#781c25" stroke-width="5"/>
-        <path d="M58 20 35 57h15l-8 39 24-48H51Z" fill="#d6b45b"/>
-      </svg>
-      <div class="header-logo-text">
-        <span>Служба Безопасности</span>
-        <b>Гроза</b>
-      </div>
-    </a>
-    <nav id="mainnav">
-      <ul>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#cases">Кейсы</a></li>
-        <li><a href="#process">Этапы</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </nav>
-    <a href="#contacts" class="btn btn-gold">Заявка</a>
-    <button class="burger" onclick="document.getElementById('mainnav').classList.toggle('open')">☰</button>
-  </div>
-</header>
+  nav ul {
+    display: flex;
+    gap: clamp(18px, 2.5vw, 32px);
+    list-style: none;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+  }
+  nav a { transition: color 0.25s; position: relative; padding: 4px 0; }
+  nav a:hover { color: var(--gold-light); }
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Служба Безопасности <span>Гроза</span></h1>
-      <p>ООО ЧОО «СБ Гроза» — профессиональная охрана частной, коммерческой и государственной собственности. Работаем в Санкт-Петербурге и по всей России.</p>
-      <div class="hero-actions">
-        <a href="#contacts" class="btn btn-gold">Оставить заявку</a>
-        <a href="#services" class="btn" style="border:1px solid var(--line); color:var(--text); background:transparent;">Наши услуги</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <svg viewBox="0 0 100 116" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z" fill="#0b0b0c" stroke="#781c25" stroke-width="3"/>
-        <path d="M50 9 88 21v39c0 25-15 38-38 48C27 98 12 85 12 60V21Z" fill="none" stroke="#d6b45b" stroke-width="1.5"/>
-        <path d="M58 20 35 57h15l-8 39 24-48H51Z" fill="#d6b45b" stroke="#211b10" stroke-width="1"/>
-      </svg>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>24/7</b><small>Мониторинг</small></div>
-      <div class="stat"><b>5 мин</b><small>Прибытие ГБР</small></div>
-      <div class="stat"><b>7</b><small>Направлений</small></div>
-      <div class="stat"><b>РФ</b><small>Вся Россия</small></div>
-    </div>
-  </div>
-</section>
+  .header-right { display: flex; align-items: center; gap: 20px; }
+  .header-phone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+  }
+  .header-phone a {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    transition: color 0.25s;
+  }
+  .header-phone a:hover { color: var(--gold); }
+  .header-phone small {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <h2 class="sec-title">О компании <em>СБ Гроза</em></h2>
-      <p><strong>ООО ЧОО «Служба Безопасности Гроза»</strong> — профессиональная охранная организация. Мы обеспечиваем защиту <strong>частной, коммерческой и государственной собственности</strong> по всей территории России.</p>
-      <p>Компания предлагает широкий спектр услуг по обеспечению безопасности и сохранности имущества — от небольших компаний до крупных объединений. Физическая и техническая охрана объектов, сохранность материальных ценностей при транспортировке грузов, консультирование и аудит.</p>
-      <p>Прозрачная схема работы, оперативное решение вопросов и профессиональная поддержка на каждом этапе. Наша главная цель — обеспечить безопасность вам и вашему бизнесу.</p>
-    </div>
-    <div class="about-visual">
-      <svg viewBox="0 0 100 116" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 200px; height: auto;">
-        <path d="M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z" fill="#0b0b0c" stroke="#781c25" stroke-width="4"/>
-        <path d="M58 20 35 57h15l-8 39 24-48H51Z" fill="#d6b45b"/>
-      </svg>
-    </div>
-  </div>
-</section>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, #c29e47, #e6cc82);
+    color: #12100a;
+  }
+  .btn-gold:hover {
+    background: linear-gradient(135deg, #e6cc82, #c29e47);
+    box-shadow: 0 6px 20px rgba(214, 180, 91, 0.22);
+  }
+  .btn-krap {
+    background: var(--krap);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .btn-krap:hover {
+    background: var(--krap-light);
+    box-shadow: 0 6px 20px rgba(122, 28, 37, 0.35);
+  }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
 
-<!-- SERVICES -->
-<section id="services" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <h2 class="sec-title">Наши <em>услуги</em></h2>
-    <p class="sec-desc">Семь ключевых направлений для комплексной защиты вашего бизнеса и имущества.</p>
-    <div class="services-grid">
-      <div class="svc"><h3>Физическая охрана</h3><p>Организация охраны объектов с учётом оперативной обстановки, характеристик объекта и требований клиента.</p><ul><li>Анализ уязвимостей</li><li>План и режим охраны</li><li>Контроль доступа</li></ul></div>
-      <div class="svc"><h3>Техническая охрана</h3><p>Видеонаблюдение, контроль доступа, пожарная сигнализация и системы оповещения для объектов любой сложности.</p><ul><li>Подбор оборудования</li><li>Проект и монтаж</li><li>Настройка ПО</li></ul></div>
-      <div class="svc"><h3>Пультовая охрана</h3><p>Круглосуточный мониторинг недвижимости. Тревожная и охранная сигнализация для бизнеса и дома.</p><ul><li>Мгновенный сигнал</li><li>Направление ГБР</li><li>Уведомление клиента</li></ul></div>
-      <div class="svc"><h3>Сопровождение грузов</h3><p>Вооружённая охрана и индивидуальный маршрут для каждой перевозки — от начального до конечного пункта.</p><ul><li>Оценка обстановки</li><li>Контроль погрузки</li><li>Патрулирование</li></ul></div>
-      <div class="svc"><h3>Охрана массовых мероприятий</h3><p>Порядок и безопасность участников на мероприятиях любого масштаба под контролем опытных нарядов.</p><ul><li>Оценка площадки</li><li>Схема постов</li><li>Действия нарядов</li></ul></div>
-      <div class="svc"><h3>Группа быстрого реагирования</h3><p>Мобильный, специально подготовленный и экипированный наряд для экстренного реагирования. Круглосуточно.</p><ul><li>Реагирование на ЧС</li><li>Локализация угроз</li><li>Первая помощь</li></ul></div>
-      <div class="svc"><h3>Консультирование</h3><p>Комплексный аудит безопасности предприятия: отчёт о состоянии системы и рекомендации по улучшению.</p><ul><li>Осмотр объекта</li><li>Анализ угроз</li><li>Стратегия защиты</li></ul></div>
-    </div>
-  </div>
-</section>
+  .burger {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--gold);
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
-<!-- GBR BANNER -->
-<section class="gbr">
-  <div class="wrap">
-    <h2>Сигнал «тревога» — и наряд уже в пути</h2>
-    <p>ГБР работает круглосуточно: сотрудники дежурят на посту мониторинга или патрулируют объекты в полной готовности. По сигналу группа выдвигается по кратчайшему маршруту, блокирует объект и локализует угрозу.</p>
-  </div>
-</section>
+  /* --- ЗАГОЛОВКИ СЕКЦИЙ --- */
+  .sec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .sec-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--krap-light);
+  }
+  .sec-title {
+    font-size: clamp(26px, 3.4vw, 38px);
+    margin-bottom: 18px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sec-title em { color: var(--gold-light); font-style: normal; }
+  .sec-desc {
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 660px;
+    font-size: 16px;
+  }
 
-<!-- КЕЙСЫ И БЛАГОДАРНОСТИ -->
-<section id="cases">
-  <div class="wrap">
-    <h2 class="sec-title">Кейсы и <em>благодарности</em></h2>
-    <p class="sec-desc">Нам доверяют охрану объектов различного уровня. Здесь вы можете ознакомиться с нашими выполненными проектами и благодарственными письмами от клиентов.</p>
-    <div class="cases-grid">
-      <div class="case-text">
-        <h3>Охрана международной конференции</h3>
-        <p>СБ «Гроза» обеспечивала безопасность и правопорядок на XVI Международной IT-конференции «Станка» 3-4 октября 2026 года.</p>
-        <p>За профессионализм, ответственность и слаженную работу наша команда была удостоена <strong>Диплома партнёра</strong> от организационного комитета мероприятия.</p>
-      </div>
-      <div class="diploma-wrapper" onclick="openModal()">
-        <img src="diplom.jpg" alt="Диплом партнёра СБ Гроза">
-      </div>
-    </div>
-  </div>
-</section>
+  /* --- HERO --- */
+  .hero {
+    background:
+      radial-gradient(circle at 82% 35%, rgba(122, 28, 37, 0.18), transparent 45%),
+      radial-gradient(circle at 15% 80%, rgba(214, 180, 91, 0.06), transparent 40%),
+      linear-gradient(180deg, #0d0f11 0%, #08090a 100%);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(64px, 8vw, 112px) 0 72px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(122, 28, 37, 0.16);
+    border: 1px solid rgba(158, 39, 51, 0.45);
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4.8vw, 56px);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.08;
+  }
+  .hero h1 span {
+    color: var(--gold);
+    display: block;
+    font-size: 0.72em;
+    margin-top: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+  }
+  .hero p {
+    color: #c2bfb8;
+    font-size: 17px;
+    margin-bottom: 38px;
+    max-width: 560px;
+    border-left: 2px solid var(--krap-light);
+    padding-left: 20px;
+    line-height: 1.75;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ГРАМОТЫ -->
-<div id="diplomaModal" class="modal" onclick="closeModal()">
-  <span class="close-btn">&times;</span>
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <img src="diplom.jpg" alt="Диплом партнёра (полный размер)">
-  </div>
-</div>
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .shield-frame {
+    width: 100%;
+    max-width: 310px;
+    aspect-ratio: 1 / 1.08;
+    background: radial-gradient(circle, rgba(214, 180, 91, 0.08) 0%, rgba(19, 21, 24, 0.6) 70%);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--krap);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  }
+  .shield-frame svg {
+    width: 165px;
+    height: auto;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.7));
+  }
+  .shield-caption {
+    margin-top: 22px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    width: 100%;
+  }
+  .shield-caption b {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .shield-caption span {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="wrap">
-    <h2 class="sec-title">Как мы <em>работаем</em></h2>
-    <div class="steps">
-      <div class="step"><b>01</b><h3>Заявка</h3><p>Оставляете заявку, эксперты консультируют по мерам защиты.</p></div>
-      <div class="step"><b>02</b><h3>Аудит</h3><p>Осмотр объекта, оценка уязвимостей и рисков.</p></div>
-      <div class="step"><b>03</b><h3>Договор</h3><p>Индивидуальная стратегия: посты, техника, ГБР.</p></div>
-      <div class="step"><b>04</b><h3>Реализация</h3><p>Выставление постов, монтаж, обучение персонала.</p></div>
-      <div class="step"><b>05</b><h3>Контроль</h3><p>Круглосуточный мониторинг и поддержка.</p></div>
-    </div>
-  </div>
-</section>
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 68px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    border-radius: 2px;
+    padding: 24px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .stat:hover {
+    border-color: var(--line-gold);
+    transform: translateY(-3px);
+  }
+  .stat b {
+    display: block;
+    font-size: 30px;
+    color: var(--gold-light);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+  .stat small {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
 
-<!-- CONTACT -->
-<section id="contacts">
-  <div class="wrap">
-    <h2 class="sec-title">Контакты <em>СБ Гроза</em></h2>
-    <p class="sec-desc">Опишите задачу: подберём оптимальную схему охраны именно под ваши условия. Ответ — в течение рабочего дня.</p>
-    <div class="contact-grid">
-      <div>
-        <div class="info-item"><small>Фактический адрес</small><b>195112, г. Санкт-Петербург, вн. тер. г. муниципальный округ Малая Охта, пр-кт Уткин, д. 15, литера Е, помещ. 2-Н</b></div>
-        <div class="info-item"><small>Дежурная служба</small><b>Круглосуточно, без выходных</b></div>
-        <div class="info-item"><small>Телефоны</small><b>+7 (911) 948-37-72<br>+7 (911) 008-31-11<br>+7 (967) 532-57-96</b></div>
-        <div class="info-item"><small>E-mail</small><b>chop.SB-Groza@yandex.ru</b></div>
-        <div class="info-item"><small>Генеральный директор</small><b>Гамаюнова Екатерина Андреевна</b></div>
-      </div>
-      <form id="leadForm">
-        <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Ваше имя" required></div>
-        <div class="field"><label>Телефон</label><input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
-        <div class="field"><label>Компания</label><input type="text" name="company" placeholder="Название (необязательно)"></div>
-        <div class="field"><label>Задача</label><textarea name="message" placeholder="Что нужно охранять, где, какие требования"></textarea></div>
-        <button type="submit" class="btn btn-krap" style="width:100%">Отправить заявку</button>
-        <div class="form-msg" id="formMsg">Форма пока не подключена. Для заявки воспользуйтесь телефоном или электронной почтой.</div>
-      </form>
-    </div>
-  </div>
-</section>
+  /* --- О КОМПАНИИ --- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-size: 16px;
+  }
+  .about-text p strong { color: var(--text); font-weight: 600; }
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <div class="header-logo" style="margin-bottom:16px;">
-          <svg viewBox="0 0 100 116" xmlns="http://www.w3.org/2000/svg" style="height:40px;">
-            <path d="M50 3 94 16v44c0 29-18 43-44 53C24 103 6 89 6 60V16Z" fill="#0b0b0c" stroke="#781c25" stroke-width="5"/>
-            <path d="M58 20 35 57h15l-8 39 24-48H51Z" fill="#d6b45b"/>
-          </svg>
-          <div class="header-logo-text">
-            <span>Служба Безопасности</span>
-            <b>Гроза</b>
-          </div>
-        </div>
-        <p>ООО ЧОО «Служба Безопасности Гроза». Комплексная защита бизнеса по всей России.</p>
-        <p style="margin-top:10px; font-size:12px;">Лицензия на осуществление частной охранной деятельности.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Навигация</h4>
-        <a href="#about">О нас</a>
-        <a href="#services">Услуги</a>
-        <a href="#cases">Кейсы</a>
-        <a href="#process">Этапы</a>
-        <a href="#contacts">Контакты</a>
-      </div>
-    </div>
-    <h4 style="color:var(--gold); font-size:16px; margin-bottom:20px; text-transform:uppercase; letter-spacing:1px;">Реквизиты организации</h4>
-    <table class="req-table">
-      <tr><
+  .about-principles {
+    display: grid;
+    gap: 14px;
+  }
+  .principle-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--krap);
+    padding: 20px 24px;
+    border-radius: 2px;
+  }
+  .principle-card h4 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .principle-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* --- УСЛУГИ --- */
+  .services-sec {
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .svc {
